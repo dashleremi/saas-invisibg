@@ -4,7 +4,12 @@ module.exports = {
     './client/index.html', // for any HTML file
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        primary: ['Chonburi'],
+        secondary: ['Abhaya Libre']
+      }
+    },
   },
   plugins: [],
 }
