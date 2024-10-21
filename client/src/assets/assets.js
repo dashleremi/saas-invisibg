@@ -25,3 +25,24 @@ export const testimonialsData = [
         jobTitle: "Graphic Designer"
     }
 ];
+
+export const plans = [
+    {
+        id: 'Basic',
+        price: 5,
+        credits: 50,
+        description: 'Best for personal use.'
+    },
+    {
+        id: 'Advanced',
+        price: 10,
+        credits: 150,
+        description: 'Best for business use.'
+    },
+    {
+        id: 'Business',
+        price: 20,
+        credits: 300,
+        description: 'Best for exterprise use.'
+    }
+]
