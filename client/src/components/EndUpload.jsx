@@ -10,7 +10,7 @@ const EndUpload = () => {
                 <input type="file"  name='' id='upload2' hidden/>
                 <label className='inline-flex items-center gap-3 px-8 py-3.5 rounded-full cursor-pointer border border-t border-[#0000001d] bg-[#ffffff] m-auto hover:bg-[#47474726] transition-all duration-300' htmlFor="upload2">
                 <AiOutlineUpload  size={20}/>
-                <p className='text-[17px] font-medium'>Upload Image</p>
+                <p className='text-[17px] font-secondary font-medium'>Upload Image</p>
                 </label>
         </div>
     </div>

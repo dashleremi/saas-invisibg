@@ -11,11 +11,9 @@ export const App = () => {
     <div className='min-h-screen'>
       <NavBar/>
       <Routes>
-
         <Route path='/' element={<Home/>}/>
         <Route path='/after' element={<After/>}/>
         <Route path='/credits' element={<Credits/>}/>
-
       </Routes>
       <Footer/>
     </div>
