@@ -6,9 +6,9 @@ const Hero = () => {
     <div className='flex items-center justify-evenly max-sm:flex-col-reverse mt-20 lg:px-44 sm:mt-30'>
         {/* Left */}
         <div className='font-secondary mt-20'>
-            <h1 className='text-5xl font-medium leading-tight'><span className='font-primary'>Picture Perfect</span><br />
+            <h1 className='text-6xl font-medium leading-tight'><span className='font-primary'>Picture Perfect</span><br />
             ... minus the background</h1>
-            <p className='my-4 text-xl text-gray-600'>Effortlessly isolate objects from any image with AI-powered background removal, <br />
+            <p className='my-3 text-2xl text-gray-600'>Effortlessly isolate objects from any image with AI-powered background removal, <br />
             perfect for clean, professional visuals.</p>
 
             <div className='mt-14'>
