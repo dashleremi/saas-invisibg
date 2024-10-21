@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import After from './pages/After'
 import Credits from './pages/Credits'
 import NavBar from './components/NavBar'
+import Footer from './components/Footer'
 
 export const App = () => {
   return (
@@ -16,6 +17,7 @@ export const App = () => {
         <Route path='/credits' element={<Credits/>}/>
 
       </Routes>
+      <Footer/>
     </div>
   )
 }

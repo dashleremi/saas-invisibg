@@ -3,6 +3,7 @@ import Hero from '../components/Hero'
 import Process from '../components/Process'
 import RemovalExample from '../components/RemovalExample'
 import Testimonials from "../components/Testimonials";
+import EndUpload from "../components/EndUpload";
 
 const Home = () => {
   return (
@@ -11,7 +12,7 @@ const Home = () => {
       <Process/>
       <RemovalExample/>
       <Testimonials/>
-      
+      <EndUpload/>
     </div>
   )
 }
