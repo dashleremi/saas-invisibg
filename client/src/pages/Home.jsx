@@ -2,6 +2,7 @@ import React from 'react'
 import Hero from '../components/Hero'
 import Process from '../components/Process'
 import RemovalExample from '../components/RemovalExample'
+import Testimonials from "../components/Testimonials";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <Process/>
       <RemovalExample/>
       <Testimonials/>
+      
     </div>
   )
 }
