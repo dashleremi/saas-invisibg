@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 
+
 const RemovalExample = () => {
 
     const [sliderPosition, setSliderPosition] = useState(50) // showing 50% of an image
@@ -8,7 +9,7 @@ const RemovalExample = () => {
     }
 
   return (
-    <div className='mx-4 lg:mx-44 py-20 xl:py-40'>
+    <div className='pb-10 md:py-20 mx-2'>
 
         <h1 className='mb-12 sm:mb-24 font-primary text-center text-xl md:text-2xl lg:text-3xl'>High-Precision <br /> Background Removal for Crisp Results</h1>
 
