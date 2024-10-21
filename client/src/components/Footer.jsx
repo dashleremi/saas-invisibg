@@ -9,8 +9,8 @@ const Footer = () => {
         <p className='font-secondary'>Copyright @ramiaemidashler.com | All rights reserved.</p>
 
         <div className='flex items-center justify-center gap-5'>
-            <a href="https://github.com/dashleremi" target='_blank' rel='noopener noreferrer'><FaGithub size={25} /></a>
             <a href="mailto:emi.dashler@gmail.com" target='_blank' rel='noopener noreferrer'><FaGoogle size={25} /></a>
+            <a href="https://github.com/dashleremi" target='_blank' rel='noopener noreferrer'><FaGithub size={25} /></a>
             <a href="https://www.instagram.com/emi.dashler/" target='_blank' rel='noopener noreferrer'><FaInstagram size={25} /></a>
         </div>
     </div>
