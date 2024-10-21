@@ -14,8 +14,8 @@ const RemovalExample = () => {
 
         {/* background images */}
         <div className='relative w-full max-w-3xl overflow-hidden m-auto rounded-xl'>
-            <img src="removal-before1.png" style={{clipPath: `inset(0 ${100.2 - sliderPosition}% 0 0)`}} alt="" />
-            <img className='absolute top-0 left-0 w-full h-full' src="removal-after1.png" style={{clipPath: `inset(0 0 0 ${sliderPosition}%)`}}  alt="" />
+            <img src="removal-before2.png" style={{clipPath: `inset(0 ${100.2 - sliderPosition}% 0 0)`}} alt="" />
+            <img className='absolute top-0 left-0 w-full h-full' src="removal-after2.png" style={{clipPath: `inset(0 0 0 ${sliderPosition}%)`}}  alt="" />
 
             {/* image slider for before and after */}
             <input className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full z-10 slider' type="range" min={0} max={100} value={sliderPosition} onChange={handleSliderChange} />
