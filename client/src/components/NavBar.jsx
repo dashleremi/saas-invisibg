@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { IoIosArrowRoundForward } from "react-icons/io";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useClerk, useUser, UserButton } from "@clerk/clerk-react";
 import { AppContext } from '../context/AppContext';
 import { CiCoinInsert } from "react-icons/ci";
@@ -9,7 +9,9 @@ const NavBar = () => {
 
   const { openSignIn } = useClerk()
   const { isSignedIn, user } = useUser()
-  const {credit, loadCreditsData} = useContext(AppContext)
+  const { credit, loadCreditsData } = useContext(AppContext)
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     if(isSignedIn) {
@@ -23,7 +25,7 @@ const NavBar = () => {
         {
           isSignedIn
           ?<div className='flex items-center gap-5 sm:gap-10'>
-            <button className='flex items-center gap-2 bg-gray-400 px-4 sm:px-7 py-1.5 sm:py-2.5 rounded-full text-white hover:scale-105 transition-all duration-700'>
+            <button onClick={()=>navigate('/credits')} className='flex items-center gap-2 bg-gray-400 px-4 sm:px-7 py-1.5 sm:py-2.5 rounded-full text-white hover:scale-105 transition-all duration-700'>
             <CiCoinInsert size={30} />
             <p className='text-md sm:text-sm font-medium text-white'>Credits: {credit} </p>
             </button>

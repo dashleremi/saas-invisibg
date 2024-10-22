@@ -34,7 +34,7 @@ const After = () => {
         {/* buttons for another image, download */}
         { resultImage && <div className='flex justify-center sm:justify-end items-center flex-wrap gap-8 mt-6 font-secondary text-xl'>
           <button className='px-8 py-3 rounded-full text-[#000000a8] border border-t border-[#c1c1c1] hover:bg-[#47474726] transition-all duration-300'>Try different image</button>
-          <a href={resultImage} download className='px-8 py-3 text-white rounded-full bg-[#000000de] hover:bg-[#47474726] transition-all duration-300' >Download image</a>
+          <a href={resultImage} download className='px-8 py-3 text-white rounded-full bg-[#000000de] hover:bg-[#47474726] transition-all duration-300'>Download image</a>
         </div>}
       </div>
 
