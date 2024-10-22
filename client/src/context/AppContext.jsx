@@ -1,43 +1,41 @@
-import { createContext, useState } from "react";
-import {useAuth} from '@clerk/clerk-react'
-import axios from 'axios'
-import { toast } from "react-toastify";
+import { createContext, useState } from 'react';
+import axios from 'axios';
+import { useAuth } from '@clerk/clerk-react';
+import { toast } from 'react-toastify';
 
-export const AppContext = createContext()
+// Create the AppContext
+export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
-    const [credit, setCredit] = useState(false)
-    const backendUrl = import.meta.env.VITE_BACKEND_URL
-    const { getToken } = useAuth()
+  const [credit, setCredit] = useState(false);
+  const { getToken } = useAuth();
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
-    const loadCreditsData = async () => {
-        try {
-            const token = await getToken()
-            const {data} = await axios.get(backendUrl + '/api/user/credits', {headers:{token}})
-            if(data.success) {
-                setCredit(data.credits)
-                console.log(data.credits)
-            }
-            
-        } catch (error) {
-            console.log(error)
-            toast.error(error.message)
-            
-        }
+  // Function to load credit data
+  const loadCreditsData = async () => {
+    try {
+      const token = await getToken();
+      const { data } = await axios.get(backendUrl + '/api/user/credits', { headers: { token } });
+
+      if (data.success) {
+        setCredit(data.credits);
+        console.log(data.credits);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
     }
+  };
 
-    const value = {
-        credit, setCredit,
-        loadCreditsData,
-        backendUrl
-        
-    }
+  const value = {
+    credit,
+    setCredit,
+    loadCreditsData,
+    backendUrl,
+  };
 
-    return (
-        <AppContext value={value}>
-            {props.children}
-        </AppContext>
-    )
-}
+  return <AppContext.Provider value={value}>{props.children}</AppContext.Provider>;
+};
 
-export default AppContextProvider
+// Only export AppContextProvider as default, AppContext is exported as named
+export default AppContextProvider;
