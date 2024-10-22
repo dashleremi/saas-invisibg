@@ -2,7 +2,7 @@ import { createContext, useState } from 'react';
 import axios from 'axios';
 import { useAuth, useClerk, useUser } from '@clerk/clerk-react';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { Form, useNavigate } from 'react-router-dom';
 
 // Create the AppContext
 export const AppContext = createContext();
@@ -48,6 +48,24 @@ const AppContextProvider = (props) => {
 
         navigate('/after')
 
+        const token = await getToken()
+
+        const formData = new FormData()
+        image && formData.append('image', image)
+
+        const {data} = await axios.post(backendUrl + '/api/image/remove-bg', formData, {headers:{token}})
+
+        if(data.success) {
+            setResultImage(data.resultImage)
+            data.creditBalance && setCredit(data.creditBalance)
+        } else {
+            toast.error(data.message)
+            data.creditBalance && setCredit(data.creditBalance)
+            if(data.creditBalance === 0) {
+                navigate('/buy')
+            }
+        }
+
         
     } catch (error) {
         console.log(error);
@@ -61,7 +79,8 @@ const AppContextProvider = (props) => {
     loadCreditsData,
     backendUrl,
     image, setImage,
-    removeBg
+    removeBg,
+    resultImage, setResultImage
   };
 
   return <AppContext.Provider value={value}>{props.children}</AppContext.Provider>;
