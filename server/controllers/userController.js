@@ -19,7 +19,7 @@ const clerkWebHooks = async (req, res) => {
         switch (type) {
             case "user.created": {
                 const userData = {
-                    clerkID: data.id,
+                    clerkId: data.id,
                     email: data.email_addresses[0].email.address,
                     firstName: data.first_name,
                     lastName: data.last_name,
@@ -38,13 +38,13 @@ const clerkWebHooks = async (req, res) => {
                     photo: data.image_url
                 }
 
-                await userModel.findOneAndUpdate({clerkID:data.id}, userData)
+                await userModel.findOneAndUpdate({clerkId:data.id}, userData)
                 res.json({})
 
                 break;
             }
             case "user.deleted": {
-                await userModel.findOneAndDelete({clerkID:data.id})
+                await userModel.findOneAndDelete({clerkId:data.id})
                 res.json({})
 
                 break;
@@ -60,4 +60,18 @@ const clerkWebHooks = async (req, res) => {
     }
 }
 
-export {clerkWebHooks}
+// API controller function to get user available creds data
+const userCredits = async (req, res) => {
+    try {
+        const {clerkId} = req.body
+        const userData = await userModel.findOne({clerkId})
+
+        res.json({success:true, credits:userData.creditBalance})
+        
+    } catch (error) {
+        console.log(error.message)
+        res.json({success:false, message:error.message})
+    }
+}
+
+export {clerkWebHooks, userCredits}

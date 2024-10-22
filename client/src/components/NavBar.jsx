@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import { useClerk, useUser, UserButton } from "@clerk/clerk-react";
+import { AppContext } from '../context/AppContext';
 
 const NavBar = () => {
 
   const { openSignIn } = useClerk()
   const { isSignedIn, user } = useUser()
+  const {credit, loadCreditsData} = useContext(AppContext)
+
+  useEffect(() => {
+    if(isSignedIn) {
+      loadCreditsData()
+    }
+  }, [isSignedIn])
 
   return (
     <div className='flex items-center justify-between mx-4 py-10 lg:mx-44 font-primary'>
