@@ -1,24 +1,24 @@
-import 'dotenv/config'
-import dotenv from 'dotenv'
-import express from 'express'
-import cors from 'cors'
-import connectDB from './configs/mongodb.js'
-import userRouter from './routes/userRoutes.js'
-import imageRouter from './routes/imageRoutes.js'
+import 'dotenv/config'; // Ensure dotenv is used for environment variables
+import express from 'express';
+import cors from 'cors';
+import connectDB from './configs/mongodb.js'; // Adjust paths
+import userRouter from './routes/userRoutes.js';
+import imageRouter from './routes/imageRoutes.js';
 
 // app configuration
-const PORT = process.env.PORT || 4000
-const app = express()
-await connectDB()
+const app = express();
+const PORT = process.env.PORT || 4000;
+
+await connectDB();
 
 // initialize middlewares
-app.use(express.json())
-app.use(cors())
+app.use(express.json());
+app.use(cors());
 
 // API routes
-app.get('/', (req, res) => res.send("API working"))
-app.use('/api/user', userRouter)
-app.use('/api/image', imageRouter)
+app.get('/', (req, res) => res.send("API working"));
+app.use('/api/user', userRouter);
+app.use('/api/image', imageRouter);
 
-app.listen(PORT, ()=> console.log("Server running on port " + PORT))
-
+// Serverless functions require export
+export default app;  // Export the app for Vercel
