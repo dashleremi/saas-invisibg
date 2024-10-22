@@ -60,15 +60,11 @@ const removeBgImage = async (req, res) => {
           },
           responseType: "arraybuffer",
         }
-      );
-  
-      const base64Image = Buffer.from(data, "binary").toString("base64");
-      const resultImage = `data:${req.file.mimetype};base64,${base64Image}`;
-  
-      // Deduct one credit from the user's account
-      await userModel.findByIdAndUpdate(user._id, {
-        creditBalance: user.creditBalance - 1,
+      ).catch((error) => {
+        console.error("Error during API request:", error.response?.data || error.message);
+        throw new Error("Failed to connect to the ClipDrop API.");
       });
+      
   
       // Return success response with the processed image
       res.json({
