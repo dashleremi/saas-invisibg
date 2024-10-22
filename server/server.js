@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(cors())
 
 // API routes
-app.get('/', (req, res) => res.send("API working"))
+//app.get('/', (req, res) => res.send("API working"))
 app.use('/api/user', userRouter)
 app.use('/api/image', imageRouter)
 
