@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { AiOutlineUpload } from "react-icons/ai";
+import { AppContext } from '../context/AppContext';
 
 const Hero = () => {
+  const { removeBg } = useContext(AppContext)
+
   return (
     <div className='flex items-center justify-evenly max-sm:flex-col-reverse mt-20 lg:px-44 sm:mt-30'>
         {/* Left */}
@@ -12,7 +15,7 @@ const Hero = () => {
             perfect for clean, professional visuals.</p>
 
             <div className='mt-14'>
-                <input type="file"  name='' id='upload1' hidden/>
+                <input onChange={ e => removeBg(e.target.files[0]) } type="file"  accept='image/*' id='upload1' hidden/>
                 <label className='inline-flex items-center gap-3 px-8 py-3.5 rounded-full cursor-pointer border border-t border-[#0000001d] bg-[#ffffff] m-auto hover:bg-[#47474726] transition-all duration-300' htmlFor="upload1">
                 <AiOutlineUpload  size={20}/>
                 <p className='text-[17px] font-medium'>Upload Image</p>
