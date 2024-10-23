@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { Link, useNavigate } from 'react-router-dom';
 import { useClerk, useUser, UserButton } from "@clerk/clerk-react";
