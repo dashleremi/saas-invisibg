@@ -63,10 +63,9 @@ const clerkWebHooks = async (req, res) => {
 // API controller function to get user available creds data
 const userCredits = async (req, res) => {
     try {
-      // Log the incoming query parameters for debugging
-      console.log("Received clerkId:", req.query.clerkId);
+      const { clerkId } = req.query; // Ensure the clerkId is coming from the query
   
-      const { clerkId } = req.query;
+      console.log("Received clerkId:", clerkId);
   
       if (!clerkId) {
         return res.json({ success: false, message: "Clerk ID is missing." });
@@ -74,13 +73,12 @@ const userCredits = async (req, res) => {
   
       const userData = await userModel.findOne({ clerkId });
   
-      // Log whether a user was found or not
       if (!userData) {
         console.log("User not found for clerkId:", clerkId);
         return res.json({ success: false, message: "User not found." });
       }
   
-      console.log("User found:", userData);
+      console.log("User found:", userData);  // Log full user data
   
       res.json({ success: true, credits: userData.creditBalance });
     } catch (error) {
@@ -88,6 +86,7 @@ const userCredits = async (req, res) => {
       res.json({ success: false, message: error.message });
     }
   };
+  
   
   
 
