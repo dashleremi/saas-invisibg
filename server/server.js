@@ -7,7 +7,7 @@ import 'dotenv/config';  // This loads environment variables from .env
 
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 4000;
 
 // Allow CORS requests from both localhost (for development) and your production domain
 const corsOptions = {
