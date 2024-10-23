@@ -1,25 +1,43 @@
-import 'dotenv/config'; // Ensure dotenv is used for environment variables
-import express from 'express';
-import cors from 'cors';
-import connectDB from './configs/mongodb.js'; // Adjust paths
-import userRouter from './routes/userRoutes.js';
-import imageRouter from './routes/imageRoutes.js';
-
-// app configuration
-const app = express();
-const PORT = process.env.PORT || 4000;
-
-// Connect to the database (without await here)
-connectDB();
-
-// initialize middlewares
-app.use(express.json());
-app.use(cors());
-
-// API routes
-app.get('/', (req, res) => res.send("API working"));
-app.use('/api/user', userRouter);
-app.use('/api/image', imageRouter);
-
-// Serverless functions require export
-export default app;  // Export the app for Vercel's Node.js runtime
+const removeBg = async (image) => {
+    if (!image) {
+      toast.error("No image selected.");
+      return;
+    }
+  
+    try {
+      if (!isSignedIn) {
+        return openSignIn();
+      }
+  
+      setImage(image);
+      setResultImage(false);
+  
+      navigate('/after');
+  
+      const token = await getToken();
+  
+      const formData = new FormData();
+      formData.append('image', image); // Adjust key based on backend expectation
+  
+      const { data } = await axios.post(backendUrl + '/api/image/remove-bg', formData, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+  
+      if (data.success) {
+        setResultImage(data.resultImage);
+        data.creditBalance && setCredit(data.creditBalance);
+      } else {
+        toast.error(data.message);
+        data.creditBalance && setCredit(data.creditBalance);
+        if (data.creditBalance === 0) {
+          navigate('/buy');
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
+  
