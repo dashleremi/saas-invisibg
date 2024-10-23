@@ -7,7 +7,7 @@ import 'dotenv/config';  // This loads environment variables from .env
 
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3001;
 
 // Allow CORS requests from both localhost (for development) and your production domain
 const corsOptions = {
@@ -20,7 +20,7 @@ const corsOptions = {
 };
 
 app.use(cors({
-    origin: 'http://localhost:3000',  // Your frontend origin
+    origin: 'http://localhost:5173',  // Your frontend origin
     methods: ['GET', 'POST', 'PUT', 'DELETE']
   }));
 
