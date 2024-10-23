@@ -9,7 +9,8 @@ import imageRouter from './routes/imageRoutes.js';
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-await connectDB();
+// Connect to the database (without await here)
+connectDB();
 
 // initialize middlewares
 app.use(express.json());
@@ -21,4 +22,4 @@ app.use('/api/user', userRouter);
 app.use('/api/image', imageRouter);
 
 // Serverless functions require export
-export default app;  // Export the app for Vercel
+export default app;  // Export the app for Vercel's Node.js runtime
