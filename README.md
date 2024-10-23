@@ -1,5 +1,6 @@
 # InvisiBG
 InvisiBG is an AI-powered background removal that allows users to seamlessly isolate subjects from images with high quality and precision.
+** developed to learn backend payment authorization, clerk user authentication and AI/ML powered page, site is currently made to break as I had no intention to make into a sellable product **
 
 # Features
 - AI-driven background removal
