@@ -12,8 +12,8 @@ const PORT = process.env.PORT || 4000;
 // Allow CORS requests from both localhost (for development) and your production domain
 const corsOptions = {
   origin: [
-    'http://localhost:5173',  // Your frontend in local development
-    'https://invisibg.vercel.app'  // Your production frontend
+    'http://localhost:5173',  
+    'https://invisibg.vercel.app'  
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Allowed HTTP methods
   credentials: true  // Allow cookies and credentials

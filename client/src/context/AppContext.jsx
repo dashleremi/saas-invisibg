@@ -22,40 +22,41 @@ const AppContextProvider = (props) => {
 
   // Function to load credit data
   const loadCreditsData = async () => {
-  try {
-    const token = await getToken();
-    
-    if (!token) {
-      toast.error("Failed to authenticate. Please sign in again.");
-      return;
-    }
-
-    const clerkId = user?.id;
-
-    if (!clerkId) {
-      toast.error("User information is missing. Please sign in again.");
-      return;
-    }
-
-    const { data } = await axios.get(`${backendUrl}/api/user/credits?clerkId=${clerkId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    try {
+      const token = await getToken();
+  
+      if (!token) {
+        toast.error("Failed to authenticate. Please sign in again.");
+        return;
       }
-    });
-
-    console.log("Backend response:", data); // Log the backend response
-
-    if (data.success) {
-      setCredit(data.credits);
-      console.log(data.credits);
-    } else {
-      toast.error(data.message || "Failed to load credits.");
+  
+      const clerkId = user?.id; // Ensure `user` is not null
+      if (!clerkId) {
+        toast.error("User information is missing. Please sign in again.");
+        return;
+      }
+  
+      // Perform the API request to fetch user credits
+      const { data } = await axios.get(`${backendUrl}/api/user/credits?clerkId=${clerkId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+  
+      console.log("Backend response", data); // Log the backend response
+  
+      if (data.success) {
+        setCredit(data.credits);
+        console.log(data.credits);
+      } else {
+        toast.error(data.message || "Failed to load credits.");
+      }
+    } catch (error) {
+      console.error("Error loading credit data:", error);
+      toast.error(error.response?.data?.message || "Error loading credit data.");
     }
-  } catch (error) {
-    console.error("Error loading credit data:", error);
-    toast.error(error.response?.data?.message || "Error loading credit data.");
-  }
-};
+  };
+  
 
   
 
@@ -124,7 +125,10 @@ const AppContextProvider = (props) => {
   };
 
   // eslint-disable-next-line react/prop-types
-  return <AppContext.Provider value={value}>{props.children}</AppContext.Provider>;
+  return (
+    // eslint-disable-next-line react/prop-types
+    <AppContext.Provider value={value}>{props.children}</AppContext.Provider>
+  ); 
 };
 
 // Only export AppContextProvider as default, AppContext is exported as named
