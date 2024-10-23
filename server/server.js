@@ -19,10 +19,7 @@ const corsOptions = {
   credentials: true  // Allow cookies and credentials
 };
 
-app.use(cors({
-    origin: 'http://localhost:5173',  // Your frontend origin
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
-  }));
+app.use(cors());
 
 app.use(express.json());
 
