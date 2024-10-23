@@ -15,7 +15,7 @@ const corsOptions = {
     'http://localhost:4000',  
     'https://invisibg.vercel.app'  
   ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Allowed HTTP methods
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],  
   credentials: true  // Allow cookies and credentials
 };
 

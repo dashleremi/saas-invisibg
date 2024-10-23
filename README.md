@@ -1,4 +1,5 @@
-![Homepage Screenshot](./homepage.png)
+![Homepage Screenshot](./client/public/homepage.png)
+
 
 # InvisiBG
 InvisiBG is an AI-powered background removal that allows users to seamlessly isolate subjects from images with high quality and precision.
