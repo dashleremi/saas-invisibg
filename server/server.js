@@ -12,19 +12,22 @@ const PORT = process.env.PORT || 4000;
 // Allow CORS requests from both localhost (for development) and your production domain
 const corsOptions = {
   origin: [
-    'http://localhost:5173',  
+    'http://localhost:4000',  
     'https://invisibg.vercel.app'  
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Allowed HTTP methods
   credentials: true  // Allow cookies and credentials
 };
 
-app.use(cors(corsOptions));  // Use the CORS middleware
+app.use(cors({
+    origin: 'http://localhost:3000',  // Your frontend origin
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+  }));
 
 app.use(express.json());
 
 // Connect to the database
-connectDB();
+await connectDB();
 
 // API routes
 app.get('/', (req, res) => res.send('API working'));

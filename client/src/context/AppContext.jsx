@@ -124,7 +124,6 @@ const AppContextProvider = (props) => {
     resultImage, setResultImage
   };
 
-  // eslint-disable-next-line react/prop-types
   return (
     // eslint-disable-next-line react/prop-types
     <AppContext.Provider value={value}>{props.children}</AppContext.Provider>

@@ -7,4 +7,6 @@ const imageRouter = express.Router()
 
 imageRouter.post('/remove-bg', upload.single('image'), authUser, removeBgImage)
 
+imageRouter.get('/remove-bg', upload.single('image'), authUser, removeBgImage)
+
 export default imageRouter
